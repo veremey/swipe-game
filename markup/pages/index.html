@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+
+    <head>
+        {{> head/head head.defaults}}
+    </head>
+
+    <body class="page">
+
+      <div class="page__wrapper">
+        <div class="page__content">
+          <div class="startscreen">
+            <div class="startscreen__header">
+              <div class="startscreen__header_share">
+                <p>Поделись: </p>
+                <div class="skin skin_light" id="share2">
+                    <div class="social-likes">
+                        <div data-service="facebook" title="Share link on Facebook"></div>
+                        <div data-service="twitter" title="Share link on twitter"></div>
+                        <div data-service="vkontakte" title="Share link on vkontakte"></div>
+                    </div>
+                </div>
+              </div>
+              <div class="questionsRange"></div>
+            </div>
+            <div class="startscreen__text">
+              <h1 class="startscreen__title" role="heading" aria-level="1">Хорошое название для доброй микроигры про “Днестр”</h1>
+              <p class="startscreen__desc">Ответьте всего на 30 вопросов, <br> чтобы понять, что  вы знайте о Днестре.</p>
+            </div>
+            <div class="startscreen__footer">
+              <p class="startscreen__desc">автор: <b>Алексей Конев</b></p>
+            </div>
+
+            <div class="slider-tooltips" data-timer="20"></div>
+          </div>
+
+          <div class="content">
+            <div class="container-to-move"></div>
+            <div class="container">
+              <div id="false" class="block block-false">
+                0
+              </div>
+              <div class="window">
+
+              </div>
+              <div id="true" class="block block-true">
+                0
+              </div>
+            </div>
+
+            <div class="buttons">
+              <button class="btn btn-false">
+                <img src="static/img/content/arrow-left.png" alt="false icon" class="btn__icon">
+                <span>НЕ ВЕРЮ</span>
+              </button>
+              <button class="btn btn-true">
+                <span>ВЕРЮ!</span>
+                <img src="static/img/content/arrow-right.png" alt="true icon" class="btn__icon">
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="ppp">
+          <div class="ppp__window"></div>
+          <button class="btn-close">X</button>
+          <ul class="page__list">
+            <li class="page__list_row"><h4 class="final__title">Верных ответов: 0 </h4><p class="question__desc">Мы покажем Вам результат, только Вам нужно его показать. </p></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <script src="static/js/separate-js/TweenMax.min.js"></script>
+      <script src="static/js/separate-js/Draggable-latest-beta.js"></script>
+      <script src="static/js/separate-js/ThrowPropsPlugin.min.js"></script>
+      <script src="static/js/separate-js/rangeslider.min.js"></script>
+      <script src="static/js/separate-js/easytimer.js"></script>
+
+      <script src="static/js/separate-js/data.js"></script>
+      <script src="static/js/separate-js/custom.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/social-likes-next/dist/social-likes.min.js"></script>
+    </body>
+
+</html>

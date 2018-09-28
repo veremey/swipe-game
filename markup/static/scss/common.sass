@@ -1,0 +1,383 @@
+*
+	box-sizing: border-box
+	outline: none
+	&:after,
+	&:before
+		box-sizing: inherit
+
+html
+	+selection
+		background: rgba(0, 0, 0, .2)
+		color: #fff
+
+html, body
+	text-rendering: optimizeLegibility
+	-webkit-font-smoothing: antialiased
+	height: 100%
+
+body
+	position: relative
+	font: 24px/1.5 'opensans-regular-webfont', Arial, sans-serif
+	color: #000
+
+* html .page__wrapper
+	height: 100%
+
+.page
+	&.is-fixed
+		position: fixed
+
+.page__wrapper
+	background: url('../img/content/dnestr-reka.jpg') 50% 50% no-repeat
+	background-size: cover
+	background-color: #fff
+	padding: 40px 0
+
+a
+	text-decoration: none
+	outline: none
+
+h1, h2, h3, h4, h5, h6
+	margin: 0 0 .8em
+	font-weight: normal
+	line-height: 1.1
+
+h1
+	font-size: 2em
+h2
+	font-size: 1.8em
+h3
+	font-size: 1.6em
+h4
+	font-size: 1.5em
+h5
+	font-size: 1.4em
+h6
+	font-size: 1.3em
+b, strong
+	font-weight: normal
+p
+	margin: 0
+
+.page__content
+	position: relative
+	width: 96%
+	max-width: 800px
+	min-height: calc(100vh - 80px)
+	height: auto
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	margin: 0 auto
+	background: #363a42 url('../img/content/startscreen.jpg') 50% 0% no-repeat
+	background-size: cover
+	overflow: hidden
+
+.questionsRange,
+.slider-tooltips
+	height: 10px
+	background-color: #cbcbcb
+	box-shadow: 0 0 1px  rgba(0, 0, 0, .2)
+	border: none
+	border-radius: 0
+	pointer-events: none
+	.noUi-origin
+		background-color: $red
+		height: 100%
+		border-radius: 0 4px 4px 0
+	.noUi-handle.noUi-handle-lower
+		display: none
+
+.slider-tooltips
+	.noUi-origin
+		+gh(#e93241, springgreen)
+
+.startscreen
+	position: relative
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	flex: 1 1 auto
+	&__header
+		&_share
+			padding: 30px 30px
+			display: flex
+			align-items: center
+			justify-content: space-between
+			width: 100%
+			+r(650)
+				padding: 12px
+		p
+			font-size: 24px
+			color: #fff
+			+or
+			+r(650)
+				font-size: 16px
+		.social-likes
+			font-size: 24px
+			+r(650)
+				font-size: 18px
+		.social-likes__widget
+			background: $n
+			margin: 4px
+		.social-likes__icon
+			fill: #fff
+
+	&__text
+		padding: 20px 30px
+		+r(650)
+			padding: 12px 20px
+	&__footer
+		padding: 20px 30px
+		margin-top: auto
+		+r(650)
+			padding: 12px 20px
+	&__title
+		font-size: 42px
+		line-height: 1.5
+		color: #fff
+		font-weight: 800
+		+r(650)
+			font-size: 24px
+	&__desc
+		font-size: 24px
+		color: #fff
+		line-height: 1.5
+		+ol
+		+r(650)
+			font-size: 18px
+	b
+		+or
+
+.content
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	position: relative
+
+.container
+	width: 100%
+	height: auto
+	min-height: 260px
+	background-color: #fff
+	margin: auto
+	+tr(.4s)
+	+r(650)
+		min-height: 100px
+	&-to-move
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 50%
+		+trx(-50%)
+		width: 2000px
+
+.block
+	position: absolute
+	top: 40px
+	bottom: 40px
+	width: 1300px
+	overflow: hidden
+	z-index: -1
+	&-true
+		left: 100%
+		background-color: springgreen
+	&-false
+		right: 100%
+		background-color: lightpink
+
+.window
+	position: relative
+	display: block
+	z-index: 10
+	&.is-true
+		background-color: green
+		.question
+			opacity: 0
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: top
+			width: 100px
+			height: 100px
+			padding: 16px
+			+vcenter
+			background: $n url('../img/content/checked.svg') 50% 50% no-repeat
+			border: 2px solid #fff
+			border-radius: 100%
+			background-size: 68%
+	&.is-false
+		background-color: #e93241
+		.question
+			opacity: 0
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: top
+			width: 100px
+			height: 100px
+			padding: 16px
+			+vcenter
+			background: $n url('../img/content/close.svg') 50% 50% no-repeat
+			border: 2px solid #fff
+			border-radius: 100%
+			background-size: 68%
+
+.question,
+.final
+	position: relative
+	width: 100%
+	padding: 50px 30px 20px
+	opacity: 1
+	overflow: visible
+	+r(650)
+		padding: 20px
+	&.is-true
+		background-color: green
+		.question__title
+			color: #fff
+	&.is-false
+		background-color: #e93241
+		.question__title
+			color: #fff
+	&__title
+		font-size: 24px
+		line-height: 2
+		margin-bottom: 5px
+		text-transform: uppercase
+		color: #e93241
+		+or
+		font-weight: bold
+		+r(650)
+			font-size: 18px
+	&__desc
+		font-size: 36px
+		color: #333333
+		line-height: 1.5
+		+or
+		+r(650)
+			font-size: 16px
+.final
+	text-align: center
+	&__desc
+		text-align: left
+		font-size: 32px
+		margin-bottom: 20px
+		+r(650)
+			font-size: 18px
+
+.buttons
+	display: flex
+	align-items: center
+	justify-content: space-between
+	background-color: #fff
+	padding: 0px 30px 20px
+	+r(650)
+		padding: 12px 20px 20px
+	&.click-disabled
+		pointer-events: none
+	&.is-disabled
+		pointer-events: none
+		.btn
+			background-color: #ccc
+.btn
+	width: 48%
+	height: 86px
+	display: flex
+	align-items: center
+	justify-content: center
+	color: #fff
+	font-size: 34px
+	line-height: 1
+	border: none
+	user-select: none
+	border-radius: 4px
+	cursor: pointer
+	opacity: .4
+	+r(650)
+		font-size: 16px
+		height: 62px
+	+tr(.4s)
+	&:hover
+		opacity: 1
+	&__icon
+		margin: 0 16px
+	&-false
+		background-color: #e93241
+		span
+			padding-right: 40px
+	&-true
+		background-color: green
+		span
+			padding-left: 40px
+	&-show
+		background-color: green
+		opacity: .8
+		width: 100%
+	&-close
+		position: absolute
+		top: 20px
+		left: 50%
+		width: 40px
+		height: 40px
+		display: inline-block
+		margin-left: 40%
+		background-color: $n
+		color: #fff
+		cursor: pointer
+		z-index: 1
+		border: 2px solid #fff
+		+anb
+		+r(650)
+			top: 14px
+
+
+.ppp
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	padding: 20px
+
+	background-color: rgba(0, 0, 0, .4)
+	transform: rotateY(-90deg)
+	overflow: auto
+	z-index: -20
+	+tr(.6s)
+	&.is-active
+		transform: none
+		z-index: 20
+.page__list
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	display: flex
+	align-items: center
+	flex-direction: column
+	padding: 36px 0 20px
+	max-height: 100vh
+	margin: 0 auto
+	list-style-type: none
+	background-color: rgba(0, 0, 0, 1)
+	overflow: auto
+
+
+	&_row
+		width: 100%
+		max-width: 800px
+		padding: 12px 8px
+		margin: 8px auto
+		&.is-true
+			background-color: rgba(0, 128, 0, .4)
+		&.is-false
+			background-color: rgba(233, 50, 65, .4)
+	.question__desc
+		font-size: 16px
+		margin-bottom: .8em
+		color: #fff
+		strong
+			display: block
+
