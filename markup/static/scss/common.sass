@@ -28,7 +28,7 @@ body
 		position: fixed
 
 .page__wrapper
-	background: url('../img/content/dnestr-reka.jpg') 50% 50% no-repeat
+	// background: url('../img/content/dnestr-reka.jpg') 50% 50% no-repeat
 	background-size: cover
 	background-color: #fff
 	padding: 40px 0
@@ -72,6 +72,7 @@ p
 	background: #363a42 url('../img/content/startscreen.jpg') 50% 0% no-repeat
 	background-size: cover
 	overflow: hidden
+	box-shadow: 0 0 2px rgba(168, 153, 153, .4)
 
 .questionsRange,
 .slider-tooltips
@@ -149,11 +150,43 @@ p
 	b
 		+or
 
+.share
+	&-btn
+		display: inline-block
+		vertical-align: top
+		background-color: $n
+		border: none
+		cursor: pointer
+		svg
+			display: inline-block
+			vertical-align: top
+			height: 24px
+			fill: #fff
+			+tr(.4s)
+		&:hover
+			svg
+				fill: $red
+
+.start
+	padding: 40px 14px
+	text-align: center
+	background-color: #fff
+	&.is-hidden
+		display: none
+	.btn
+		margin: 0 auto
+		background-color: #333
+		text-shadow: none
+		overflow: hidden
+		+anb
+
 .content
-	display: flex
-	flex-direction: column
-	justify-content: space-between
-	position: relative
+	display: none
+	&.is-active
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		position: relative
 
 .container
 	width: 100%
@@ -267,6 +300,7 @@ p
 			font-size: 18px
 
 .buttons
+	position: relative
 	display: flex
 	align-items: center
 	justify-content: space-between
@@ -293,13 +327,14 @@ p
 	user-select: none
 	border-radius: 4px
 	cursor: pointer
-	opacity: .4
+	// opacity: .4
 	+r(650)
 		font-size: 16px
 		height: 62px
 	+tr(.4s)
 	&:hover
-		opacity: 1
+		box-shadow: 0 0 4px rgba(0, 0, 0, .6)
+		text-shadow: 0 0 6px rgba(0, 0, 0, .6)
 	&__icon
 		margin: 0 16px
 	&-false
@@ -333,35 +368,28 @@ p
 
 
 .ppp
-	position: absolute
-	top: 0
-	left: 0
-	right: 0
-	bottom: 0
+	position: relative
+	display: none
 	padding: 20px
 
-	background-color: rgba(0, 0, 0, .4)
+	// background-color: rgba(0, 0, 0, .4)
 	transform: rotateY(-90deg)
-	overflow: auto
+	// overflow: auto
 	z-index: -20
 	+tr(.6s)
 	&.is-active
+		display: block
 		transform: none
 		z-index: 20
 .page__list
-	position: absolute
-	top: 0
-	left: 0
-	right: 0
-	bottom: 0
 	display: flex
 	align-items: center
 	flex-direction: column
 	padding: 36px 0 20px
-	max-height: 100vh
+	// max-height: 100vh
 	margin: 0 auto
 	list-style-type: none
-	background-color: rgba(0, 0, 0, 1)
+	// background-color: rgba(0, 0, 0, 1)
 	overflow: auto
 
 
@@ -371,9 +399,9 @@ p
 		padding: 12px 8px
 		margin: 8px auto
 		&.is-true
-			background-color: rgba(0, 128, 0, .4)
+			background-color: rgba(0, 128, 0, 1)
 		&.is-false
-			background-color: rgba(233, 50, 65, .4)
+			background-color: rgba(233, 50, 65, 1)
 	.question__desc
 		font-size: 16px
 		margin-bottom: .8em

@@ -53,14 +53,14 @@ var secunda =  + tooltipSlider.getAttribute('data-timer');
 
 var timer = new Timer();
 
-timer.start({precision: 'seconds'});
-noUiSlider.create(tooltipSlider, {
-  start: 0,
-  range: {
-      'min': 0,
-      'max': secunda
-  }
-});
+// timer.start({precision: 'seconds'});
+// noUiSlider.create(tooltipSlider, {
+//   start: 0,
+//   range: {
+//       'min': 0,
+//       'max': secunda
+//   }
+// });
 
 timer.addEventListener('secondsUpdated', function (e) {
   var secundaVal = timer.getTotalTimeValues().seconds;
@@ -180,7 +180,8 @@ var init = {
 
     showBtn.addEventListener('click', function(){
       ppp.classList.add('is-active');
-      page.classList.add('is-fixed');
+      scrollToSmoothly(pageList, 600);
+      // page.classList.add('is-fixed');
     });
   },
   showNewAnswer: function () {
@@ -271,12 +272,11 @@ var init = {
         init.clearAnswer();
         init.showNewAnswer();
         // init.threshhold();
-
         // init.checkTotal();
-        buttons.classList.remove('click-disabled');
       }
-
     });
+
+    buttons.classList.remove('click-disabled');
 
   },
   drugTrue: function () {
@@ -296,12 +296,10 @@ var init = {
         init.clearAnswer();
         init.showNewAnswer();
         // init.threshhold();
-
-        buttons.classList.remove('click-disabled');
-
       }
-
     });
+    buttons.classList.remove('click-disabled');
+
   },
   checkTotal: function() {
     if(swipeCount == dataLength  ) {
@@ -341,12 +339,22 @@ shuffle(dataNum);
 
 let swipeCount = +'0';
 
+function scrollToSmoothly(el) {
+  el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+  });
+}
+
 init.threshhold();
 
 var falseBtn = document.querySelector('.btn-false');
 var trueBtn = document.querySelector('.btn-true');
 var closeBtn = document.querySelector('.btn-close');
 var page = document.querySelector('.page');
+var tab = document.querySelector('.js-tab');
+var start = document.querySelector('.start');
+var content = document.querySelector('.content');
 
 falseBtn.addEventListener('click', function(){
   init.drugFalse();
@@ -360,7 +368,21 @@ trueBtn.addEventListener('click', function(){
 
 closeBtn.addEventListener('click', function(){
   ppp.classList.remove('is-active');
-  page.classList.remove('is-fixed');
+});
+
+tab.addEventListener('click', function(){
+  content.classList.add('is-active');
+  start.classList.add('is-hidden');
+
+  timer.start({precision: 'seconds'});
+  noUiSlider.create(tooltipSlider, {
+    start: 0,
+    range: {
+        'min': 0,
+        'max': secunda
+    }
+  });
+
 });
 
 

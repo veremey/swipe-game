@@ -497,7 +497,6 @@ body {
 }
 
 .page__wrapper {
-  background: url("../img/content/dnestr-reka.jpg") 50% 50% no-repeat;
   background-size: cover;
   background-color: #fff;
   padding: 40px 0;
@@ -566,6 +565,8 @@ p {
   background: #363a42 url("../img/content/startscreen.jpg") 50% 0% no-repeat;
   background-size: cover;
   overflow: hidden;
+  -webkit-box-shadow: 0 0 2px rgba(168, 153, 153, 0.4);
+          box-shadow: 0 0 2px rgba(168, 153, 153, 0.4);
 }
 
 .questionsRange,
@@ -717,7 +718,91 @@ p {
   font-family: 'opensans-regular-webfont', Arial, sans-serif;
 }
 
+.share-btn {
+  display: inline-block;
+  vertical-align: top;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.share-btn svg {
+  display: inline-block;
+  vertical-align: top;
+  height: 24px;
+  fill: #fff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.share-btn:hover svg {
+  fill: #e93241;
+}
+
+.start {
+  padding: 40px 14px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.start.is-hidden {
+  display: none;
+}
+
+.start .btn {
+  margin: 0 auto;
+  background-color: #333;
+  text-shadow: none;
+  overflow: hidden;
+  position: relative;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+}
+
+.start .btn:hover {
+  color: #333333;
+}
+
+.start .btn:hover:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.start .btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: #ffffff;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out;
+  -webkit-transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+  transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out;
+  -webkit-transition: -webkit-transform 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out, -webkit-transform 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out, -webkit-transform 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+}
+
 .content {
+  display: none;
+}
+
+.content.is-active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -920,6 +1005,7 @@ p {
 }
 
 .buttons {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -973,7 +1059,6 @@ p {
           user-select: none;
   border-radius: 4px;
   cursor: pointer;
-  opacity: .4;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -986,7 +1071,9 @@ p {
 }
 
 .btn:hover {
-  opacity: 1;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
 .btn__icon {
@@ -1028,6 +1115,7 @@ p {
   cursor: pointer;
   z-index: 1;
   border: 2px solid #fff;
+  position: relative;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
@@ -1078,33 +1166,24 @@ p {
 }
 
 .ppp {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  display: none;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
   -webkit-transform: rotateY(-90deg);
           transform: rotateY(-90deg);
-  overflow: auto;
   z-index: -20;
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
 
 .ppp.is-active {
+  display: block;
   -webkit-transform: none;
           transform: none;
   z-index: 20;
 }
 
 .page__list {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1116,10 +1195,8 @@ p {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 36px 0 20px;
-  max-height: 100vh;
   margin: 0 auto;
   list-style-type: none;
-  background-color: black;
   overflow: auto;
 }
 
@@ -1131,11 +1208,11 @@ p {
 }
 
 .page__list_row.is-true {
-  background-color: rgba(0, 128, 0, 0.4);
+  background-color: green;
 }
 
 .page__list_row.is-false {
-  background-color: rgba(233, 50, 65, 0.4);
+  background-color: #e93241;
 }
 
 .page__list .question__desc {
