@@ -2,14 +2,30 @@ var view = document.querySelector('.window');
 var pageList = document.querySelector('.page__list');
 var ppp = document.querySelector('.ppp');
 var startscreen  = document.querySelector('.startscreen');
+var falseBtn = document.querySelector('.btn-false');
+var trueBtn = document.querySelector('.btn-true');
+var closeBtn = document.querySelector('.btn-close');
+var page = document.querySelector('.page');
+var tab = document.querySelector('.js-tab');
+var start = document.querySelector('.start');
+var content = document.querySelector('.content');
 
 var dataIndexNow;
 var questionCount = 1;
 
+// Shufffel function
+function shuffle(o){
+  for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i],   o[i] = o[j], o[j] = x);
+  return o;
+}
+
 let dataNum = [];
+
 for(key in data) {;
   dataNum.push(key);
 };
+
+shuffle(dataNum);
 
 var dataLength = dataNum.length;
 
@@ -55,20 +71,11 @@ var secunda =  + tooltipSlider.getAttribute('data-timer');
 
 var timer = new Timer();
 
-// timer.start({precision: 'seconds'});
-// noUiSlider.create(tooltipSlider, {
-//   start: 0,
-//   range: {
-//       'min': 0,
-//       'max': secunda
-//   }
-// });
-
 timer.addEventListener('secondsUpdated', function (e) {
   var secundaVal = timer.getTotalTimeValues().seconds;
 
   tooltipSlider.noUiSlider.set(secundaVal);
-  if(secundaVal == secunda){
+  if(secundaVal == 0){
     init.showResult();
   }
 });
@@ -76,34 +83,6 @@ timer.addEventListener('secondsUpdated', function (e) {
 /*- range -*/
 
 var init = {
-  drag: function () {
-    Draggable.create( question, {
-      type: 'x',
-      bounds: container,
-      edgeResistance: 0.8,
-      throwProps: true,
-      onDragEnd: function () {
-        if (this.hitTest(targetFalse) ) {
-          TweenMax.to(targetFalse, 1, { backgroundColor: 'red' });
-          var valr = ++targetFalse.textContent;
-          var text = targetFalse.textContent;
-          targetFalse.textContent.replace(text, valr);
-          console.log(valr);
-
-        } else if (this.hitTest(targetTrue) ) {
-          TweenMax.to(targetTrue, 1, { backgroundColor: 'red' });
-          var valr = ++targetTrue.textContent;
-          var text = targetTrue.textContent;
-          targetTrue.textContent.replace(text, valr);
-          console.log(valr);
-
-        }
-      },
-      onPress: function () {
-        console.log( this.target.id + ' = ' + Math.round( this.x ) + ' : ' + Math.round( this.y ) );
-      }
-    });
-  },
   countThis: function(el){
     var valr = ++el.textContent;
     var text = el.textContent;
@@ -196,7 +175,7 @@ var init = {
 
     showBtn.addEventListener('click', function(){
       ppp.classList.add('is-active');
-      scrollToSmoothly(pageList, 600);
+      scrollToSmoothly(content, 600);
       // page.classList.add('is-fixed');
     });
 
@@ -205,6 +184,7 @@ var init = {
     });
   },
   showNewAnswer: function () {
+    // console.log(swipeCount);
     if(swipeCount == dataLength  ) {
       init.showResult();
     } else {
@@ -349,13 +329,7 @@ var init = {
 };
 
 
-// Shufffel function
-function shuffle(o){
-  for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i],   o[i] = o[j], o[j] = x);
-  return o;
-}
 
-shuffle(dataNum);
 
 let swipeCount = +'0';
 
@@ -368,13 +342,6 @@ function scrollToSmoothly(el) {
 
 init.threshhold();
 
-var falseBtn = document.querySelector('.btn-false');
-var trueBtn = document.querySelector('.btn-true');
-var closeBtn = document.querySelector('.btn-close');
-var page = document.querySelector('.page');
-var tab = document.querySelector('.js-tab');
-var start = document.querySelector('.start');
-var content = document.querySelector('.content');
 
 falseBtn.addEventListener('click', function(){
   init.drugFalse();
