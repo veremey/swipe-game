@@ -793,6 +793,7 @@ p {
   display: inline-block;
   vertical-align: top;
   height: 24px;
+  width: 24px;
   fill: #fff;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -804,6 +805,7 @@ p {
 
 .start {
   padding: 40px 14px;
+  margin-top: auto;
   text-align: center;
   background-color: #fff;
 }
