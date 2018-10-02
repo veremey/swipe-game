@@ -1,6 +1,8 @@
 var view = document.querySelector('.window');
 var pageList = document.querySelector('.page__list');
 var ppp = document.querySelector('.ppp');
+var startscreen  = document.querySelector('.startscreen');
+
 var dataIndexNow;
 var questionCount = 1;
 
@@ -120,6 +122,10 @@ var init = {
 
     if($data == answer) {
       init.countThis(targetTrue);
+      startscreen.classList.add('is-true');
+      setTimeout(function() {
+        startscreen.classList.remove('is-true');
+      }, 400);
 
       var questionContent = '<div  class="question is-true" ><h3 class="question__title">Верно </h3><p class="question__desc">'+ data[dataNum[dataIndexNow]].desc +'</p></div>';
 
@@ -135,6 +141,10 @@ var init = {
     } else {
 
       init.countThis(targetFalse);
+      startscreen.classList.add('is-false');
+      setTimeout(function() {
+        startscreen.classList.remove('is-false');
+      }, 400);
 
       var questionContent = '<div  class="question is-false" ><h3 class="question__title">Ошибка </h3><p class="question__desc">'+ data[dataNum[dataIndexNow]].desc +'</p></div>';
       var listContent = '<div class="page__list_question"><p class="question__desc">'+ data[dataNum[dataIndexNow]].question +'</p><p class="question__desc"><strong>Правильный ответ: </strong> '+ data[dataNum[dataIndexNow]].desc +'</p></div>';
@@ -175,13 +185,23 @@ var init = {
     buttons.innerHTML = '';
     buttons.appendChild(btn);
 
+    var btnRestart = document.createElement('button');
+    btnRestart.className = 'btn btn-restart js-restart';
+    btnRestart.innerHTML = 'Повторить игру';
+    buttons.appendChild(btnRestart);
+
     var showBtn = document.querySelector('.btn-show');
+    var restartBtn = document.querySelector('.btn-restart');
     var pageList = document.querySelector('.page__list');
 
     showBtn.addEventListener('click', function(){
       ppp.classList.add('is-active');
       scrollToSmoothly(pageList, 600);
       // page.classList.add('is-fixed');
+    });
+
+    restartBtn.addEventListener('click', function(){
+      window.location.reload();
     });
   },
   showNewAnswer: function () {
@@ -374,9 +394,11 @@ tab.addEventListener('click', function(){
   content.classList.add('is-active');
   start.classList.add('is-hidden');
 
-  timer.start({precision: 'seconds'});
+  timer.start({countdown: true, startValues: {seconds: secunda}, precision: 'seconds'});
+
   noUiSlider.create(tooltipSlider, {
     start: 0,
+    tooltips: [wNumb({decimals: 0})],
     range: {
         'min': 0,
         'max': secunda

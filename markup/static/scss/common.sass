@@ -90,8 +90,16 @@ p
 		display: none
 
 .slider-tooltips
+	.noUi-handle.noUi-handle-lower
+		display: inline-block
+		width: 0
+		height: 0
+		right: 0 !important
+		&:before,
+		&:after
+			content: none
 	.noUi-origin
-		+gh(#e93241, springgreen)
+		+gh(springgreen, #e93241)
 
 .startscreen
 	position: relative
@@ -99,6 +107,38 @@ p
 	flex-direction: column
 	justify-content: space-between
 	flex: 1 1 auto
+	&.is-true
+		background-color: green
+		.startscreen__text
+			opacity: 0
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: top
+			width: 100px
+			height: 100px
+			padding: 16px
+			+vcenter
+			background: $n url('../img/content/checked.svg') 50% 50% no-repeat
+			border: 2px solid #fff
+			border-radius: 100%
+			background-size: 68%
+	&.is-false
+		background-color: #e93241
+		.startscreen__text
+			opacity: 0
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: top
+			width: 100px
+			height: 100px
+			padding: 16px
+			+vcenter
+			background: $n url('../img/content/close.svg') 50% 50% no-repeat
+			border: 2px solid #fff
+			border-radius: 100%
+			background-size: 68%
 	&__header
 		&_share
 			padding: 30px 30px
@@ -345,10 +385,10 @@ p
 		background-color: green
 		span
 			padding-left: 40px
-	&-show
+	&-show,
+	&-restart
 		background-color: green
 		opacity: .8
-		width: 100%
 	&-close
 		position: absolute
 		top: 20px

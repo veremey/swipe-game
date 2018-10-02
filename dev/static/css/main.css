@@ -592,11 +592,22 @@ p {
   display: none;
 }
 
+.slider-tooltips .noUi-handle.noUi-handle-lower {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  right: 0 !important;
+}
+
+.slider-tooltips .noUi-handle.noUi-handle-lower:before, .slider-tooltips .noUi-handle.noUi-handle-lower:after {
+  content: none;
+}
+
 .slider-tooltips .noUi-origin {
-  background-color: #e93241;
-  background-image: -webkit-gradient(linear, left top, right top, from(#e93241), to(springgreen));
-  background-image: -webkit-linear-gradient(left, #e93241, springgreen);
-  background-image: linear-gradient(to right, #e93241, springgreen);
+  background-color: springgreen;
+  background-image: -webkit-gradient(linear, left top, right top, from(springgreen), to(#e93241));
+  background-image: -webkit-linear-gradient(left, springgreen, #e93241);
+  background-image: linear-gradient(to right, springgreen, #e93241);
 }
 
 .startscreen {
@@ -614,6 +625,58 @@ p {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
+}
+
+.startscreen.is-true {
+  background-color: green;
+}
+
+.startscreen.is-true .startscreen__text {
+  opacity: 0;
+}
+
+.startscreen.is-true:after {
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 100px;
+  padding: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: transparent url("../img/content/checked.svg") 50% 50% no-repeat;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  background-size: 68%;
+}
+
+.startscreen.is-false {
+  background-color: #e93241;
+}
+
+.startscreen.is-false .startscreen__text {
+  opacity: 0;
+}
+
+.startscreen.is-false:after {
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 100px;
+  padding: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: transparent url("../img/content/close.svg") 50% 50% no-repeat;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  background-size: 68%;
 }
 
 .startscreen__header_share {
@@ -1096,10 +1159,9 @@ p {
   padding-left: 40px;
 }
 
-.btn-show {
+.btn-show, .btn-restart {
   background-color: green;
   opacity: .8;
-  width: 100%;
 }
 
 .btn-close {
